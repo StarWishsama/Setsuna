@@ -5,23 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f5ac2466-4c60-478f-9336-277a4bfa3515" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/ren/natsuyuk1/setsuna/api/TweetApi.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/ren/natsuyuk1/setsuna/api/options/TwitterOption.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/ren/natsuyuk1/setsuna/consts/APIParamater.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/ren/natsuyuk1/setsuna/consts/ApiRoute.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/ren/natsuyuk1/setsuna/objects/TwitterCommonResponse.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/ren/natsuyuk1/setsuna/objects/tweet/Tweet.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/ren/natsuyuk1/setsuna/objects/tweet/TweetPublicMetrics.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/ren/natsuyuk1/setsuna/response/TweetFetchResponse.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/ren/natsuyuk1/setsuna/response/TwitterAPIError.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/ren/natsuyuk1/setsuna/util/SerialUtil.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/kotlin/ren/natsuyuk1/setsuna/test/TestSetsunaClient.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/kotlin/ren/natsuyuk1/setsuna/test/api/TestTweetAPI.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/ren/natsuyuk1/setsuna/Setsuna.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/ren/natsuyuk1/setsuna/Setsuna.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/ren/natsuyuk1/setsuna/SetsunaClient.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/ren/natsuyuk1/setsuna/SetsunaClient.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/LICENSE" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -91,20 +75,21 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.go.format.on.save.advertiser.fired&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.go.formatter.settings.were.checked&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.go.migrated.go.modules.settings&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;com.github.patou.gitmoji.display-icon&quot;: &quot;icon&quot;,
-    &quot;com.github.patou.gitmoji.text-after-unicode&quot;: &quot; &quot;,
-    &quot;go.import.settings.migrated&quot;: &quot;true&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.go.format.on.save.advertiser.fired": "true",
+    "RunOnceActivity.go.formatter.settings.were.checked": "true",
+    "RunOnceActivity.go.migrated.go.modules.settings": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "com.github.patou.gitmoji.display-icon": "icon",
+    "com.github.patou.gitmoji.text-after-unicode": " ",
+    "go.import.settings.migrated": "true",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "preferences.pluginManager"
   }
-}</component>
+}]]></component>
   <component name="RunManager" selected="Gradle.Setsuna [test]">
     <configuration name="Setsuna [refreshVersions]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
@@ -219,6 +204,7 @@
       <workItem from="1661013413371" duration="235000" />
       <workItem from="1661049917849" duration="13404000" />
       <workItem from="1661137478724" duration="25000" />
+      <workItem from="1661152958219" duration="220000" />
     </task>
     <task id="LOCAL-00001" summary=":tada: Init project">
       <created>1661013191891</created>
@@ -227,15 +213,37 @@
       <option name="project" value="LOCAL" />
       <updated>1661013191891</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary=":beers: feat: add basic `Setsuna` API">
+      <created>1661153097467</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1661153097467</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="VcsManagerConfiguration">
+    <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
+    <option name="CHECK_NEW_TODO" value="false" />
     <MESSAGE value=":tada: Init project" />
-    <option name="LAST_COMMIT_MESSAGE" value=":tada: Init project" />
+    <MESSAGE value=":beers: feat: add basic `Setsuna` API" />
+    <option name="LAST_COMMIT_MESSAGE" value=":beers: feat: add basic `Setsuna` API" />
+    <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="VgoProject">
     <settings-migrated>true</settings-migrated>
