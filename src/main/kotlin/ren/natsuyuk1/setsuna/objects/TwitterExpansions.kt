@@ -3,6 +3,9 @@ package ren.natsuyuk1.setsuna.objects
 import kotlinx.serialization.Serializable
 import ren.natsuyuk1.setsuna.objects.tweet.Tweet
 
+/**
+ * @see https://developer.twitter.com/en/docs/twitter-api/expansions
+ */
 @Serializable
 data class TwitterExpansions(
     // val media: List<Media>? = null,

@@ -19,8 +19,8 @@ import kotlin.coroutines.CoroutineContext
  */
 class SetsunaClient(
     val client: HttpClient = defaultClient,
-    val coroutineContext: CoroutineContext = CoroutineName("setsuna-client"),
-    val bearerToken: String
+    private val coroutineContext: CoroutineContext = CoroutineName("setsuna-client"),
+    val bearerToken: String,
 ) {
     internal fun HttpRequestBuilder.appendAuth() = bearerAuth(bearerToken)
 }

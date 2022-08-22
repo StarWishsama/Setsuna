@@ -7,11 +7,11 @@ import ren.natsuyuk1.setsuna.objects.tweet.Tweet
 @Serializable
 data class TweetFetchResponse(
     @SerialName("data")
-    val tweet: Tweet
-)
+    val tweet: Tweet? = null
+): TwitterCommonResponse()
 
 @Serializable
 data class MultipleTweetFetchResponse(
     @SerialName("data")
-    val tweets: List<Tweet>
-)
+    val tweets: List<Tweet>? = null
+): TwitterCommonResponse()

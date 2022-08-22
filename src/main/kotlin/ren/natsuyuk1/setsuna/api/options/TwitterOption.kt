@@ -2,6 +2,7 @@ package ren.natsuyuk1.setsuna.api.options
 
 import io.ktor.client.request.*
 import io.ktor.http.*
+import ren.natsuyuk1.setsuna.consts.TWEET_FIELD
 
 /**
  * The [TweetOption] enables you to select which
@@ -26,7 +27,9 @@ enum class TweetOption(
      * Contains context annotations for the Tweet.
      */
     CONTEXT_ANNOTATIONS("context_annotations"),
+
     CONVERSATION_ID("conversation_id"),
+
     CREATED_DATE("created_at"),
 
     /**
@@ -111,12 +114,12 @@ enum class TweetOption(
     WITHHELD("withheld"),
 }
 
-internal fun HttpRequestBuilder.appendOption(options: List<TweetOption>) = run {
+internal fun HttpRequestBuilder.appendTweetOption(options: List<TweetOption>) = run {
     if (options.isEmpty()) {
         return@run
     }
 
-    parameter("tweet.fields", buildString {
+    parameter(TWEET_FIELD, buildString {
         options.forEach {
             append("${it.param},")
         }

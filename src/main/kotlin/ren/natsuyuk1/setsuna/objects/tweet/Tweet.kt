@@ -4,7 +4,7 @@ import kotlinx.datetime.Instant
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.json.JsonObject
-import ren.natsuyuk1.setsuna.objects.TwitterCommonResponse
+import ren.natsuyuk1.setsuna.response.TwitterCommonResponse
 import ren.natsuyuk1.setsuna.serializer.ISODateSerializer
 
 /**
@@ -15,13 +15,13 @@ data class Tweet(
     /**
      * Unique identifier of this Tweet.
      */
-    val id: String? = null,
+    val id: String,
     /**
      * The plain content of the Tweet.
      *
      * You can use [String.removeShortLink()] remove short url like `t.co`
      */
-    val text: String? = null,
+    val text: String,
 
     /**
      * Specifies the type of attachments (if any) present in this Tweet.

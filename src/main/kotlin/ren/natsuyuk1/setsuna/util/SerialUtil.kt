@@ -7,7 +7,7 @@ import ren.natsuyuk1.setsuna.Setsuna
 
 private val logger = KotlinLogging.logger {}
 
-internal inline fun <reified T> String.deserializeTo(): T {
+internal inline fun <reified T> String.deserializeResponse(): T {
     logger.trace { "Received raw json: $this" }
     return try {
         Setsuna.defaultJson.value.decodeFromString(this)

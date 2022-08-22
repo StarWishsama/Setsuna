@@ -30,10 +30,29 @@ dependencies {
     testImplementation(kotlin("test"))
 }
 
+sourceSets {
+    main {
+        java {
+            setSrcDirs(setOf("kotlin"))
+        }
+    }
+    test {
+        java {
+            setSrcDirs(setOf("kotlin"))
+        }
+    }
+}
+
 tasks.test {
     useJUnitPlatform()
 }
 
 tasks.withType<KotlinCompile> {
     kotlinOptions.jvmTarget = "17"
+}
+
+kotlin {
+    jvmToolchain {
+        languageVersion.set(JavaLanguageVersion.of(17))
+    }
 }
