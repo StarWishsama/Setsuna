@@ -8,7 +8,7 @@ import kotlinx.serialization.descriptors.SerialDescriptor
 import kotlinx.serialization.encoding.Decoder
 import kotlinx.serialization.encoding.Encoder
 
-class ISODateSerializer : KSerializer<Instant> {
+internal class ISODateSerializer : KSerializer<Instant> {
     override val descriptor: SerialDescriptor = PrimitiveSerialDescriptor("ISODate", PrimitiveKind.STRING)
 
     override fun serialize(encoder: Encoder, value: Instant) = encoder.encodeString(value.toString())

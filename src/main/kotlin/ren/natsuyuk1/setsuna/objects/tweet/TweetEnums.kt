@@ -12,3 +12,13 @@ enum class TweetReplySetting {
     @SerialName("followers")
     FOLLOWERS,
 }
+
+@Serializable
+enum class ReferencedTweetType {
+    @SerialName("retweeted")
+    RETWEETED,
+    @SerialName("quoted")
+    QUOTED,
+    @SerialName("replied_to")
+    REPLY_TO,
+}

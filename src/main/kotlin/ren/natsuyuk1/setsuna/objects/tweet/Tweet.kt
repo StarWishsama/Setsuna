@@ -7,18 +7,21 @@ import kotlinx.serialization.json.JsonObject
 import ren.natsuyuk1.setsuna.objects.TwitterCommonResponse
 import ren.natsuyuk1.setsuna.serializer.ISODateSerializer
 
+/**
+ * A Basic [Tweet] object.
+ */
 @Serializable
 data class Tweet(
     /**
      * Unique identifier of this Tweet.
      */
-    val id: String,
+    val id: String? = null,
     /**
      * The plain content of the Tweet.
      *
      * You can use [String.removeShortLink()] remove short url like `t.co`
      */
-    val text: String,
+    val text: String? = null,
 
     /**
      * Specifies the type of attachments (if any) present in this Tweet.
@@ -33,7 +36,7 @@ data class Tweet(
     /**
      * Contains context annotations for the Tweet.
      */
-    val contextAnnotations: JsonObject? = null,
+    val contextAnnotations: List<ContextAnnotation>? = null,
 
     /**
      * The Tweet ID of the original Tweet of the conversation (which includes direct replies, replies of replies).
@@ -41,6 +44,9 @@ data class Tweet(
     @SerialName("conversation_id")
     val conversationID: Long? = null,
 
+    /**
+     * Creation time of the Tweet.
+     */
     @SerialName("created_at")
     @Serializable(ISODateSerializer::class)
     val createdTime: Instant? = null,
@@ -84,7 +90,7 @@ data class Tweet(
      * Requires user context authentication.
      */
     @SerialName("organic_metrics")
-    val organicMetrics: TweetNonPublicMetrics? = null,
+    val organicMetrics: TweetOrganicMetrics? = null,
 
     /**
      * This field only surfaces when a Tweet contains a link.

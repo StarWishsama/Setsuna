@@ -5,8 +5,6 @@ import kotlinx.serialization.json.JsonObject
 
 @Serializable
 data class TwitterAPIError(
-    val errors: List<JsonObject>,
-    val title: String? = null,
-    val detail: String? = null,
-    val type: String? = null
+    val code: Int? = null,
+    val message: String? = null
 )

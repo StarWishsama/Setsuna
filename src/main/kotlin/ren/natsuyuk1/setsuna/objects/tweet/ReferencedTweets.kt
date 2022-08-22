@@ -4,6 +4,6 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 data class ReferencedTweets(
-    val type: String,
+    val type: ReferencedTweetType,
     val id: String
 )
