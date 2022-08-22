@@ -17,6 +17,7 @@ object Setsuna {
             prettyPrint = true
             isLenient = true
             coerceInputValues = true
+            ignoreUnknownKeys = true
         }
     )
 }
