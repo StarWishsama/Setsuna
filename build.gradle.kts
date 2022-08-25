@@ -88,8 +88,9 @@ kotlin {
     }
 }
 
-val javadocJar by tasks.registering(Jar::class) {
-    archiveClassifier.set("javadoc")
+java {
+    withJavadocJar()
+    withSourcesJar()
 }
 
 publishing {
@@ -106,14 +107,16 @@ publishing {
                 password = project.ext["sonatypePassword"]?.toString()
             }
         }
+
+        publications {
+            create<MavenPublication>("binaryAndSources") {
+                from(components["java"])
+            }
+        }
     }
 
     // Configure all publications
     publications.withType<MavenPublication> {
-
-        // Stub javadoc.jar artifact
-        artifact(javadocJar.get())
-
         // Provide artifacts information requited by Maven Central
         pom {
             name.set("Setsuna")
@@ -133,7 +136,9 @@ publishing {
                 }
             }
             scm {
-                url.set("https://github.com/StarWishsama/Setsuna.git")
+                url.set("https://github.com/StarWishsama/Setsuna")
+                connection.set("scm:git:git://github.com/StarWishsama/Setsuna.git")
+                developerConnection.set("scm:git:ssh://git@github.com/StarWishsama/Setsuna.git")
             }
         }
     }
