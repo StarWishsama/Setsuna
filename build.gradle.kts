@@ -57,6 +57,10 @@ dependencies {
     testImplementation(kotlin("test"))
 }
 
+configurations.all {
+    resolutionStrategy.cacheChangingModulesFor(0, TimeUnit.SECONDS)
+}
+
 sourceSets {
     main {
         java {
