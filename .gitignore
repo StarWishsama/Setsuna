@@ -42,5 +42,6 @@ bin/
 .DS_Store
 /.idea/
 
-### Setsuna Test Files ###
+### Setsuna Files ###
 token
+local.properties

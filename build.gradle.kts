@@ -12,8 +12,8 @@ plugins {
 ext["signing.keyId"] = null
 ext["signing.password"] = null
 ext["signing.secretKeyRingFile"] = null
-ext["ossrhUsername"] = null
-ext["ossrhPassword"] = null
+ext["sonatypeUsername"] = null
+ext["sonatypePassword"] = null
 
 val secretPropsFile: File = project.rootProject.file("local.properties")
 if (secretPropsFile.exists()) {
@@ -28,8 +28,8 @@ if (secretPropsFile.exists()) {
     ext["signing.keyId"] = System.getenv("SIGNING_KEY_ID")
     ext["signing.password"] = System.getenv("SIGNING_PASSWORD")
     ext["signing.secretKeyRingFile"] = System.getenv("SIGNING_SECRET_KEY_RING_FILE")
-    ext["ossrhUsername"] = System.getenv("OSSRH_USERNAME")
-    ext["ossrhPassword"] = System.getenv("OSSRH_PASSWORD")
+    ext["sonatypeUsername"] = System.getenv("SONATYPE_USERNAME")
+    ext["sonatypePassword"] = System.getenv("SONATYPE_PASSWORD")
 }
 
 group = "ren.natsuyuk1.setsuna"
@@ -98,8 +98,8 @@ publishing {
             val url = if (version.toString().contains("SNAPSHOT")) snapshotsRepoUrl else releasesRepoUrl
             setUrl(url)
             credentials {
-                username = ext["ossrhUsername"]?.toString()
-                password = ext["ossrhPassword"]?.toString()
+                username = ext["sonatypeUsername"]?.toString()
+                password = ext["sonatypePassword"]?.toString()
             }
         }
     }
