@@ -98,8 +98,8 @@ publishing {
             val url = if (version.toString().contains("SNAPSHOT")) snapshotsRepoUrl else releasesRepoUrl
             setUrl(url)
             credentials {
-                username = ext["sonatypeUsername"]?.toString()
-                password = ext["sonatypePassword"]?.toString()
+                username = project.ext["sonatypeUsername"]?.toString()
+                password = project.ext["sonatypePassword"]?.toString()
             }
         }
     }
