@@ -9,3 +9,9 @@ data class UserFetchResponse(
     @SerialName("data")
     val user: TwitterUser? = null
 ): TwitterCommonResponse()
+
+@Serializable
+data class UsersFetchResponse(
+    @SerialName("data")
+    val user: List<TwitterUser>? = null
+): TwitterCommonResponse()

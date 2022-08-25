@@ -5,13 +5,14 @@ import io.ktor.client.request.*
 import mu.KotlinLogging
 import ren.natsuyuk1.setsuna.SetsunaClient
 import ren.natsuyuk1.setsuna.api.options.TweetOption
-import ren.natsuyuk1.setsuna.api.options.appendTweetOption
+import ren.natsuyuk1.setsuna.api.options.appendOption
 import ren.natsuyuk1.setsuna.api.options.defaultTweetOption
 import ren.natsuyuk1.setsuna.consts.TWEET
 import ren.natsuyuk1.setsuna.consts.TWITTER_BASE_API
 import ren.natsuyuk1.setsuna.response.MultipleTweetFetchResponse
 import ren.natsuyuk1.setsuna.response.TweetFetchResponse
 import ren.natsuyuk1.setsuna.util.deserializeResponse
+import ren.natsuyuk1.setsuna.util.encodeToParameter
 
 private val logger = KotlinLogging.logger {}
 
@@ -28,7 +29,7 @@ suspend fun SetsunaClient.fetchTweet(
     logger.debug { "Fetching single tweet ($tweetID)" }
 
     return client.get("$TWITTER_BASE_API$TWEET/$tweetID") {
-        appendTweetOption(tweetOption)
+        appendOption(tweetOption)
         appendAuth()
     }.body<String>()
         .deserializeResponse()
@@ -48,15 +49,8 @@ suspend fun SetsunaClient.fetchTweets(
 
     return client.get("$TWITTER_BASE_API$TWEET") {
         parameter("ids", tweetIDs.encodeToParameter())
-        appendTweetOption(tweetOption)
+        appendOption(tweetOption)
         appendAuth()
     }.body<String>()
         .deserializeResponse()
 }
-
-internal fun Array<out String>.encodeToParameter(): String =
-    buildString {
-        this@encodeToParameter.forEach {
-            append("$it,")
-        }
-    }.dropLast(1)

@@ -13,6 +13,8 @@ internal const val TWEET = "/tweets"
  */
 internal const val USER = "/users"
 
+internal const val RETRIEVE_BY_USERNAMES = "/by"
+
 internal const val RETRIEVE_BY_USERNAME = "/by/username"
 
 internal const val SELF_INFO = "/me"
