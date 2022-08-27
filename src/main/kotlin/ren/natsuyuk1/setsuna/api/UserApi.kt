@@ -2,6 +2,7 @@ package ren.natsuyuk1.setsuna.api
 
 import io.ktor.client.call.*
 import io.ktor.client.request.*
+import io.ktor.client.statement.*
 import ren.natsuyuk1.setsuna.SetsunaClient
 import ren.natsuyuk1.setsuna.api.options.TweetOption
 import ren.natsuyuk1.setsuna.api.options.UserOption
