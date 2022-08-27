@@ -10,11 +10,13 @@ internal fun HttpRequestBuilder.appendOption(options: List<TwitterOption>) = run
         return@run
     }
 
-    parameter(options.first().fieldName, buildString {
-        options.forEach {
-            append("${it.param},")
-        }
-    }.dropLast(1))
+    options.groupBy { it.fieldName }.forEach { (field, option) ->
+        parameter(field, buildString {
+            option.forEach {
+                append("${it.param},")
+            }
+        }.dropLast(1))
+    }
 }
 
 sealed class TwitterOption(internal val fieldName: String, internal val param: String, val isLimited: Boolean = false)
