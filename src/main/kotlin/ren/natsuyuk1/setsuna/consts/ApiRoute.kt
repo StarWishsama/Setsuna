@@ -18,3 +18,5 @@ internal const val RETRIEVE_BY_USERNAMES = "/by"
 internal const val RETRIEVE_BY_USERNAME = "/by/username"
 
 internal const val SELF_INFO = "/me"
+
+internal const val TIMELINE = "/tweets"

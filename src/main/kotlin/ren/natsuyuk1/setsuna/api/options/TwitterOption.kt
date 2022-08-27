@@ -3,8 +3,29 @@ package ren.natsuyuk1.setsuna.api.options
 import io.ktor.client.request.*
 import io.ktor.http.*
 import ren.natsuyuk1.setsuna.consts.TWEET_FIELD
+import ren.natsuyuk1.setsuna.consts.USER_FIELD
+
+internal fun HttpRequestBuilder.appendOption(options: List<TwitterOption>) = run {
+    if (options.isEmpty()) {
+        return@run
+    }
+
+    parameter(options.first().fieldName, buildString {
+        options.forEach {
+            append("${it.param},")
+        }
+    }.dropLast(1))
+}
 
 sealed class TwitterOption(internal val fieldName: String, internal val param: String, val isLimited: Boolean = false)
+
+/**
+ * The [CustomTwitterOption] is for enable field
+ * which setsuna isn't support now.
+ *
+ * May remove in the future.
+ */
+class CustomTwitterOption(fieldName: String, value: String): TwitterOption(fieldName, value)
 
 /**
  * The [TweetOption] enables you to select which
@@ -62,7 +83,7 @@ sealed class TweetOption(param: String, isLimited: Boolean = false): TwitterOpti
     /**
      * Engagement metrics for the Tweet at the time of the request.
      */
-    class PublicMetrics: TweetOption("public_metrics", true)
+    class PublicMetrics: TweetOption("public_metrics")
 
     /**
      * Organic engagement metrics for the Tweet at the time of the request.
@@ -113,18 +134,6 @@ sealed class TweetOption(param: String, isLimited: Boolean = false): TwitterOpti
     class WithHeld: TweetOption("withheld")
 }
 
-internal fun HttpRequestBuilder.appendOption(options: List<TwitterOption>) = run {
-    if (options.isEmpty()) {
-        return@run
-    }
-
-    parameter(options.first().fieldName, buildString {
-        options.forEach {
-            append("${it.param},")
-        }
-    }.dropLast(1))
-}
-
 val defaultTweetOption: List<TweetOption> by lazy {
     listOf(
         TweetOption.Attachments(),
@@ -141,6 +150,43 @@ val defaultTweetOption: List<TweetOption> by lazy {
         TweetOption.Entities(),
         TweetOption.CreatedDate(),
         TweetOption.ConversationID(),
-        TweetOption.ContextAnnotations()
+        TweetOption.ContextAnnotations(),
+        TweetOption.PublicMetrics()
+    )
+}
+
+sealed class UserOption(param: String, isLimited: Boolean = false): TwitterOption(USER_FIELD, param, isLimited) {
+    class CreatedDate: UserOption("created_at")
+    class Description: UserOption("description")
+    class Entities: UserOption("entities")
+    class ID: UserOption("id")
+    class Location: UserOption("location")
+    class Name: UserOption("name")
+    class PinnedTweetID: UserOption("pinned_tweet_id")
+    class ProfileImageURL: UserOption("profile_image_url")
+    class Protected: UserOption("protected")
+    class PublicMetrics: UserOption("public_metrics")
+    class URL: UserOption("url")
+    class Username: UserOption("username")
+    class Verified: UserOption("verified")
+    class WithHeld: UserOption("withheld")
+}
+
+val defaultUserOption: List<UserOption> by lazy {
+    listOf(
+        UserOption.CreatedDate(),
+        UserOption.Description(),
+        UserOption.Entities(),
+        UserOption.ID(),
+        UserOption.Location(),
+        UserOption.Name(),
+        UserOption.PinnedTweetID(),
+        UserOption.ProfileImageURL(),
+        UserOption.Protected(),
+        UserOption.PublicMetrics(),
+        UserOption.URL(),
+        UserOption.Username(),
+        UserOption.Verified(),
+        UserOption.WithHeld()
     )
 }
