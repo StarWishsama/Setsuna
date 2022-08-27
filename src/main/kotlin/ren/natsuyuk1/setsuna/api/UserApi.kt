@@ -1,6 +1,5 @@
 package ren.natsuyuk1.setsuna.api
 
-import io.ktor.client.call.*
 import io.ktor.client.request.*
 import io.ktor.client.statement.*
 import ren.natsuyuk1.setsuna.SetsunaClient
@@ -17,7 +16,7 @@ import ren.natsuyuk1.setsuna.response.UsersFetchResponse
 import ren.natsuyuk1.setsuna.util.deserializeResponse
 import ren.natsuyuk1.setsuna.util.encodeToParameter
 
-suspend fun SetsunaClient.fetchUser(id: Long, tweetOption: List<TweetOption> = listOf(), userOption: List<UserOption> = defaultUserOption): UserFetchResponse =
+suspend fun SetsunaClient.fetchUser(id: String, tweetOption: List<TweetOption> = listOf(), userOption: List<UserOption> = defaultUserOption): UserFetchResponse =
     client.get("$TWITTER_BASE_API$USER/$id") {
         appendOption(tweetOption + userOption)
         appendAuth()
