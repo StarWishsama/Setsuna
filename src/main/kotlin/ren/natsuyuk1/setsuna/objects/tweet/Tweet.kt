@@ -31,11 +31,13 @@ data class Tweet(
     /**
      * The unique identifier of the User who posted this Tweet.
      */
+    @SerialName("author_id")
     val authorID: String? = null,
 
     /**
      * Contains context annotations for the Tweet.
      */
+    @SerialName("context_annotations")
     val contextAnnotations: List<ContextAnnotation>? = null,
 
     /**
