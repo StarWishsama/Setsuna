@@ -12,9 +12,11 @@ data class URLEntity(
     val expandedURL: String,
     @SerialName("display_url")
     val displayURL: String,
-    val status: String,
-    val title: String,
-    val description: String,
+    val status: String? = null,
+    val title: String? = null,
+    val description: String? = null,
     @SerialName("unwound_url")
-    val unwoundURL: String,
+    val unwoundURL: String? = null,
+    @SerialName("media_key")
+    val mediaKey: String? = null,
 )
