@@ -3,7 +3,7 @@ package ren.natsuyuk1.setsuna.objects.tweet
 import kotlinx.datetime.Instant
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
-import kotlinx.serialization.json.JsonObject
+import ren.natsuyuk1.setsuna.objects.tweet.entity.TweetEntity
 import ren.natsuyuk1.setsuna.response.TwitterCommonResponse
 import ren.natsuyuk1.setsuna.serializer.ISODateSerializer
 
@@ -56,7 +56,7 @@ data class Tweet(
     /**
      * Entities which have been parsed out of the text of the Tweet. Additionally see entities in Twitter Objects.
      */
-    val entities: JsonObject? = null,
+    val entities: TweetEntity? = null,
 
     /**
      * Contains details about the location tagged by the user in this Tweet, if they specified one.
