@@ -3,7 +3,6 @@ package ren.natsuyuk1.setsuna.api
 import io.ktor.client.request.*
 import io.ktor.client.statement.*
 import ren.natsuyuk1.setsuna.SetsunaClient
-import ren.natsuyuk1.setsuna.api.options.TweetOption
 import ren.natsuyuk1.setsuna.api.options.TwitterOption
 import ren.natsuyuk1.setsuna.api.options.appendOption
 import ren.natsuyuk1.setsuna.api.options.defaultTwitterOption
@@ -46,7 +45,7 @@ suspend fun SetsunaClient.fetchUserByUsernames(vararg usernames: String, twitter
     }.bodyAsText()
         .deserializeResponse()
 
-suspend fun SetsunaClient.getMe(tweetOption: List<TweetOption> = listOf(), twitterOption: List<TwitterOption> = defaultTwitterOption): UserFetchResponse =
+suspend fun SetsunaClient.getMe(twitterOption: List<TwitterOption> = defaultTwitterOption): UserFetchResponse =
     client.get("$TWITTER_BASE_API$USER$RETRIEVE_BY_USERNAMES") {
         appendOption(twitterOption)
         appendAuth()
