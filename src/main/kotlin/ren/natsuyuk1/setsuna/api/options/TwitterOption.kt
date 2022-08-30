@@ -2,6 +2,7 @@ package ren.natsuyuk1.setsuna.api.options
 
 import io.ktor.client.request.*
 import io.ktor.http.*
+import ren.natsuyuk1.setsuna.consts.MEDIA_FIELD
 import ren.natsuyuk1.setsuna.consts.TWEET_FIELD
 import ren.natsuyuk1.setsuna.consts.USER_FIELD
 
@@ -20,6 +21,10 @@ internal fun HttpRequestBuilder.appendOption(options: List<TwitterOption>) = run
 }
 
 sealed class TwitterOption(internal val fieldName: String, internal val param: String, val isLimited: Boolean = false)
+
+val defaultTwitterOption by lazy {
+    defaultTweetOption + defaultUserOption + defaultMediaOption
+}
 
 /**
  * The [CustomTwitterOption] is for enable field
@@ -136,7 +141,7 @@ sealed class TweetOption(param: String, isLimited: Boolean = false): TwitterOpti
     class WithHeld: TweetOption("withheld")
 }
 
-val defaultTweetOption: List<TweetOption> by lazy {
+private val defaultTweetOption: List<TweetOption> by lazy {
     listOf(
         TweetOption.Attachments(),
         TweetOption.AuthorID(),
@@ -174,7 +179,7 @@ sealed class UserOption(param: String, isLimited: Boolean = false): TwitterOptio
     class WithHeld: UserOption("withheld")
 }
 
-val defaultUserOption: List<UserOption> by lazy {
+private val defaultUserOption: List<UserOption> by lazy {
     listOf(
         UserOption.CreatedDate(),
         UserOption.Description(),
@@ -190,5 +195,39 @@ val defaultUserOption: List<UserOption> by lazy {
         UserOption.Username(),
         UserOption.Verified(),
         UserOption.WithHeld()
+    )
+}
+
+/**
+ * duration_ms, height, media_key, preview_image_url, type, url, width, public_metrics, non_public_metrics, organic_metrics, promoted_metrics, alt_text, variants
+ */
+sealed class MediaOption(param: String, isLimited: Boolean = false): TwitterOption(MEDIA_FIELD, param, isLimited) {
+    class Duration: MediaOption("duration_ms")
+    class Height: MediaOption("height")
+    class MediaKey: MediaOption("media_key")
+    class PreviewImageURL: MediaOption("preview_image_url")
+    class Type: MediaOption("type")
+    class URL: MediaOption("url")
+    class Width: MediaOption("width")
+    class PublicMetrics: MediaOption("public_metrics")
+    class NonPublicMetrics: MediaOption("non_public_metrics", true)
+    class OrganicMetrics: MediaOption("organic_metrics", true)
+    class PromoteMetrics: MediaOption("promoted_metrics", true)
+    class AltText: MediaOption("alt_text")
+    class Variants: MediaOption("variants")
+}
+
+private val defaultMediaOption by lazy {
+    listOf(
+        MediaOption.MediaKey(),
+        MediaOption.Duration(),
+        MediaOption.Height(),
+        MediaOption.PreviewImageURL(),
+        MediaOption.Type(),
+        MediaOption.URL(),
+        MediaOption.Width(),
+        MediaOption.PublicMetrics(),
+        MediaOption.AltText(),
+        MediaOption.Variants()
     )
 }

@@ -4,8 +4,9 @@ import io.ktor.client.request.*
 import io.ktor.client.statement.*
 import mu.KotlinLogging
 import ren.natsuyuk1.setsuna.SetsunaClient
-import ren.natsuyuk1.setsuna.api.options.*
+import ren.natsuyuk1.setsuna.api.options.TwitterOption
 import ren.natsuyuk1.setsuna.api.options.appendOption
+import ren.natsuyuk1.setsuna.api.options.defaultTwitterOption
 import ren.natsuyuk1.setsuna.consts.TIMELINE
 import ren.natsuyuk1.setsuna.consts.TWEET
 import ren.natsuyuk1.setsuna.consts.TWITTER_BASE_API
@@ -22,17 +23,16 @@ private val logger = KotlinLogging.logger {}
  * Fetch a single tweet with specific tweet ID.
  *
  * @param tweetID Tweet ID
- * @param tweetOption request options, see [TweetOption]
+ * @param twitterOption request options, see [TwitterOption]
  */
 suspend fun SetsunaClient.fetchTweet(
     tweetID: String,
-    tweetOption: List<TweetOption> = defaultTweetOption,
-    userOption: List<UserOption> = defaultUserOption,
+    twitterOption: List<TwitterOption> = defaultTwitterOption,
 ): TweetFetchResponse {
     logger.debug { "Fetching single tweet ($tweetID)" }
 
     return client.get("$TWITTER_BASE_API$TWEET/$tweetID") {
-        appendOption(tweetOption + userOption)
+        appendOption(twitterOption)
         appendAuth()
     }.bodyAsText()
         .deserializeResponse()
@@ -42,18 +42,17 @@ suspend fun SetsunaClient.fetchTweet(
  * Fetch tweets with specific tweet IDs.
  *
  * @param tweetIDs Tweet IDs
- * @param tweetOption request options, see [TweetOption]
+ * @param twitterOption request options, see [TwitterOption]
  */
 suspend fun SetsunaClient.fetchTweets(
     vararg tweetIDs: String,
-    tweetOption: List<TweetOption> = defaultTweetOption,
-    userOption: List<UserOption> = defaultUserOption,
+    twitterOption: List<TwitterOption> = defaultTwitterOption,
 ): MultipleTweetFetchResponse {
     logger.debug { "Fetching tweets (${tweetIDs.toList()})" }
 
     return client.get("$TWITTER_BASE_API$TWEET") {
         parameter("ids", tweetIDs.encodeToParameter())
-        appendOption(tweetOption + userOption)
+        appendOption(twitterOption)
         appendAuth()
     }.bodyAsText()
         .deserializeResponse()
@@ -65,16 +64,16 @@ suspend fun SetsunaClient.fetchTweets(
  * Using pagination, the most recent 3,200 Tweets can be retrieved.
  *
  * @param userID Twitter User ID
- * @param tweetOption [TweetOption]
+ * @param twitterOption request options, see [TwitterOption]
  */
 suspend fun SetsunaClient.getUserTimeline(
     userID: String,
-    tweetOption: List<TweetOption> = defaultTweetOption
+    twitterOption: List<TwitterOption> = defaultTwitterOption
 ): UserTimelineResponse {
     logger.debug { "Fetching timeline of user (${userID})" }
     
     return client.get("$TWITTER_BASE_API$USER/$userID$TIMELINE") {
-        appendOption(tweetOption)
+        appendOption(twitterOption)
         appendAuth()
     }.bodyAsText()
         .deserializeResponse()
