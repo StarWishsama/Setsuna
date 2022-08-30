@@ -2,6 +2,7 @@ package ren.natsuyuk1.setsuna.api.options
 
 import io.ktor.client.request.*
 import io.ktor.http.*
+import ren.natsuyuk1.setsuna.consts.EXPANSIONS_FIELD
 import ren.natsuyuk1.setsuna.consts.MEDIA_FIELD
 import ren.natsuyuk1.setsuna.consts.TWEET_FIELD
 import ren.natsuyuk1.setsuna.consts.USER_FIELD
@@ -230,4 +231,8 @@ val defaultMediaOption by lazy {
         MediaOption.AltText(),
         MediaOption.Variants()
     )
+}
+
+sealed class Expansions(param: String): TwitterOption(EXPANSIONS_FIELD, param, false) {
+    class Media: Expansions("attachments.media_keys")
 }

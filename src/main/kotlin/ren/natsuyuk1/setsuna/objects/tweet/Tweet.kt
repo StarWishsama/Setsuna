@@ -4,7 +4,6 @@ import kotlinx.datetime.Instant
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 import ren.natsuyuk1.setsuna.objects.tweet.entity.TweetEntity
-import ren.natsuyuk1.setsuna.response.TwitterCommonResponse
 import ren.natsuyuk1.setsuna.serializer.ISODateSerializer
 
 /**
@@ -139,4 +138,4 @@ data class Tweet(
     val source: String? = null,
 
     val withheld: TweetWithHeldInfo? = null,
-): TwitterCommonResponse()
+)

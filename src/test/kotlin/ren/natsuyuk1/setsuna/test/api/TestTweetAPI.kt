@@ -6,6 +6,8 @@ import org.junit.jupiter.api.TestInstance
 import ren.natsuyuk1.setsuna.api.fetchTweet
 import ren.natsuyuk1.setsuna.api.fetchTweets
 import ren.natsuyuk1.setsuna.api.getUserTimeline
+import ren.natsuyuk1.setsuna.api.options.Expansions
+import ren.natsuyuk1.setsuna.api.options.defaultTwitterOption
 import ren.natsuyuk1.setsuna.test.client
 import ren.natsuyuk1.setsuna.test.isCI
 import ren.natsuyuk1.setsuna.test.print
@@ -17,7 +19,11 @@ class TestTweetAPI {
         if (isCI) return
 
         runBlocking {
-            client.fetchTweet("1561246803575840769").print()
+            val resp = client.fetchTweet("1561246803575840769", defaultTwitterOption + Expansions.Media())
+
+            resp.includes?.print()
+
+            resp.print()
         }
     }
 

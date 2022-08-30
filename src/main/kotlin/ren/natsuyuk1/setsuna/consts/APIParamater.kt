@@ -5,3 +5,5 @@ internal const val TWEET_FIELD = "tweet.fields"
 internal const val USER_FIELD = "user.fields"
 
 internal const val MEDIA_FIELD = "media.fields"
+
+internal const val EXPANSIONS_FIELD = "expansions"
