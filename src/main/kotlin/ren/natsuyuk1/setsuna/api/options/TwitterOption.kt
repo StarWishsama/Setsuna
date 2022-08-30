@@ -141,7 +141,7 @@ sealed class TweetOption(param: String, isLimited: Boolean = false): TwitterOpti
     class WithHeld: TweetOption("withheld")
 }
 
-private val defaultTweetOption: List<TweetOption> by lazy {
+val defaultTweetOption: List<TweetOption> by lazy {
     listOf(
         TweetOption.Attachments(),
         TweetOption.AuthorID(),
@@ -179,7 +179,7 @@ sealed class UserOption(param: String, isLimited: Boolean = false): TwitterOptio
     class WithHeld: UserOption("withheld")
 }
 
-private val defaultUserOption: List<UserOption> by lazy {
+val defaultUserOption: List<UserOption> by lazy {
     listOf(
         UserOption.CreatedDate(),
         UserOption.Description(),
@@ -217,7 +217,7 @@ sealed class MediaOption(param: String, isLimited: Boolean = false): TwitterOpti
     class Variants: MediaOption("variants")
 }
 
-private val defaultMediaOption by lazy {
+val defaultMediaOption by lazy {
     listOf(
         MediaOption.MediaKey(),
         MediaOption.Duration(),

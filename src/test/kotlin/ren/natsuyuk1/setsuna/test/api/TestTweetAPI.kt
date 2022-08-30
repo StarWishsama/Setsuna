@@ -17,7 +17,7 @@ class TestTweetAPI {
         if (isCI) return
 
         runBlocking {
-            client.fetchTweet("1561246803575840769", emptyList()).print()
+            client.fetchTweet("1561246803575840769").print()
         }
     }
 
