@@ -6,7 +6,7 @@ import mu.KotlinLogging
 import ren.natsuyuk1.setsuna.SetsunaClient
 import ren.natsuyuk1.setsuna.api.options.TwitterOption
 import ren.natsuyuk1.setsuna.api.options.appendOption
-import ren.natsuyuk1.setsuna.api.options.defaultTwitterOption
+import ren.natsuyuk1.setsuna.api.options.defaultTweetOption
 import ren.natsuyuk1.setsuna.consts.TIMELINE
 import ren.natsuyuk1.setsuna.consts.TWEET
 import ren.natsuyuk1.setsuna.consts.TWITTER_BASE_API
@@ -27,7 +27,7 @@ private val logger = KotlinLogging.logger {}
  */
 suspend fun SetsunaClient.fetchTweet(
     tweetID: String,
-    twitterOption: List<TwitterOption> = defaultTwitterOption,
+    twitterOption: List<TwitterOption> = defaultTweetOption,
 ): TweetFetchResponse {
     logger.debug { "Fetching single tweet ($tweetID)" }
 
@@ -46,7 +46,7 @@ suspend fun SetsunaClient.fetchTweet(
  */
 suspend fun SetsunaClient.fetchTweets(
     vararg tweetIDs: String,
-    twitterOption: List<TwitterOption> = defaultTwitterOption,
+    twitterOption: List<TwitterOption> = defaultTweetOption,
 ): MultipleTweetFetchResponse {
     logger.debug { "Fetching tweets (${tweetIDs.toList()})" }
 
@@ -68,7 +68,7 @@ suspend fun SetsunaClient.fetchTweets(
  */
 suspend fun SetsunaClient.getUserTimeline(
     userID: String,
-    twitterOption: List<TwitterOption> = defaultTwitterOption
+    twitterOption: List<TwitterOption> = defaultTweetOption
 ): UserTimelineResponse {
     logger.debug { "Fetching timeline of user (${userID})" }
     
