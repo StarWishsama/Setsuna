@@ -6,6 +6,7 @@ import org.junit.jupiter.api.TestInstance
 import ren.natsuyuk1.setsuna.api.fetchUserByUsername
 import ren.natsuyuk1.setsuna.test.client
 import ren.natsuyuk1.setsuna.test.isCI
+import ren.natsuyuk1.setsuna.test.print
 import kotlin.test.assertEquals
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
@@ -15,7 +16,9 @@ class TestUserAPI {
         if (isCI) return
 
         runBlocking {
-            assertEquals("1315323245306888193", client.fetchUserByUsername("noraincity_").user?.id)
+            val resp = client.fetchUserByUsername("noraincity_")
+            resp.print()
+            assertEquals("1315323245306888193", resp.user?.id)
         }
     }
 }

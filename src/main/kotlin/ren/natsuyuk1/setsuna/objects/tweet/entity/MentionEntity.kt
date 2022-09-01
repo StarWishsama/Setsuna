@@ -6,5 +6,6 @@ import kotlinx.serialization.Serializable
 data class MentionEntity(
     val start: Int,
     val end: Int,
-    val tag: String
+    val username: String,
+    val id: String
 )
